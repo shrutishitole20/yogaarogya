@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
             .from('health_assessments')
             .select('*')
             .eq('user_id', user.id)
-            .single();
+            .maybeSingle();
 
           if (healthError && healthError.code !== 'PGRST116') {
             console.error('Health assessment error:', healthError);
