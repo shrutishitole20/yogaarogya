@@ -45,7 +45,7 @@ const HealthAssessment: React.FC = () => {
           .from('health_assessments')
           .select('*')
           .eq('user_id', user.id)
-          .single();
+          .maybeSingle();
 
         if (error && error.code !== 'PGRST116') {
           // If table doesn't exist, skip loading previous data
