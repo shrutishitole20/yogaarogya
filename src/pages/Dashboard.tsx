@@ -43,9 +43,36 @@ const Dashboard: React.FC = () => {
         if (profileError) throw profileError;
         setProfileData(profileData);
         
-        // Note: Health assessments table doesn't exist yet
-        // TODO: Implement health assessments functionality
-        setHealthConditions([]);
+        // Fetch health assessment
+        try {
+          const { data: healthData, error: healthError } = await supabase
+            .from('health_assessments')
+            .select('*')
+            .eq('user_id', user.id)
+            .single();
+
+          if (healthError && healthError.code !== 'PGRST116') {
+            console.error('Health assessment error:', healthError);
+          }
+
+          if (healthData) {
+            // Extract health conditions
+            const conditions = Object.entries(healthData)
+              .filter(([key, value]) =>
+                value === true &&
+                key !== 'id' &&
+                key !== 'created_at' &&
+                key !== 'user_id')
+              .map(([key]) => key.replace(/_/g, ' '));
+
+            setHealthConditions(conditions);
+          } else {
+            setHealthConditions([]);
+          }
+        } catch (healthError) {
+          console.error('Error loading health conditions:', healthError);
+          setHealthConditions([]);
+        }
         
         // Fetch total user count
         const { count, error: countError } = await supabase
