@@ -31,9 +31,14 @@ const HealthAssessment: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedConditions, setSelectedConditions] = useState<Record<string, boolean>>(
-    Object.fromEntries(healthConditions.map(condition => [condition.id, false]))
-  );
+  const [selectedConditions, setSelectedConditions] = useState<Record<string, boolean>>(() => {
+    const initialState: Record<string, boolean> = {};
+    healthConditions.forEach(condition => {
+      initialState[condition.id] = false;
+    });
+    console.log('Initial state created:', initialState);
+    return initialState;
+  });
 
   useEffect(() => {
     const checkExistingAssessment = async () => {
