@@ -30,9 +30,9 @@ const Feedback: React.FC = () => {
           .from('feedback')
           .select('*')
           .eq('user_id', user.id)
-          .single();
-        
-        if (error && error.code !== 'PGRST116') {
+          .maybeSingle();
+
+        if (error) {
           throw error;
         }
         
