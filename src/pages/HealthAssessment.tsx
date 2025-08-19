@@ -95,7 +95,11 @@ const HealthAssessment: React.FC = () => {
     try {
       setIsSubmitting(true);
       setErrorMsg('');
-      
+
+      console.log('Starting health assessment submission...');
+      console.log('Selected conditions:', selectedConditions);
+      console.log('User ID:', user.id);
+
       // Check if user already has an assessment
       const { data, error: fetchError } = await supabase
         .from('health_assessments')
@@ -104,18 +108,25 @@ const HealthAssessment: React.FC = () => {
         .maybeSingle();
 
       if (fetchError) {
+        console.error('Error fetching existing assessment:', fetchError);
         throw fetchError;
       }
-      
+
       if (data) {
+        console.log('Updating existing assessment with ID:', data.id);
         // Update existing assessment
         const { error: updateError } = await supabase
           .from('health_assessments')
           .update(selectedConditions)
           .eq('id', data.id);
-        
-        if (updateError) throw updateError;
+
+        if (updateError) {
+          console.error('Update error:', updateError);
+          throw updateError;
+        }
+        console.log('Assessment updated successfully');
       } else {
+        console.log('Creating new assessment');
         // Create new assessment
         const { error: insertError } = await supabase
           .from('health_assessments')
@@ -123,10 +134,15 @@ const HealthAssessment: React.FC = () => {
             user_id: user.id,
             ...selectedConditions
           });
-        
-        if (insertError) throw insertError;
+
+        if (insertError) {
+          console.error('Insert error:', insertError);
+          throw insertError;
+        }
+        console.log('Assessment created successfully');
       }
-      
+
+      console.log('Navigating to yoga recommendations...');
       // Navigate to recommendations page
       navigate('/yoga-recommendations');
       
