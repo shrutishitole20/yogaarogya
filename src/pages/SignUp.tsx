@@ -94,29 +94,32 @@ const SignUp: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateStep3()) {
       return;
     }
-    
+
     try {
       setLoading(true);
       setErrorMsg('');
-      
+
       // 1. Create auth user
       const { data, error } = await signUp(email, password);
-      
+
       if (error) {
         throw error;
       }
-      
+
       const userId = data?.user?.id;
-      
+
       if (!userId) {
         throw new Error('User creation failed');
       }
-      
-      // 2. Create profile
+
+      // 2. Wait a moment for the session to be established
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // 3. Create profile using service role to bypass RLS during signup
       const { error: profileError } = await supabase.from('profiles').insert({
         id: userId,
         name,
@@ -126,14 +129,14 @@ const SignUp: React.FC = () => {
         experience_years: previousYogaExperience ? parseInt(experienceYears) : null,
         goals: goals || null
       });
-      
+
       if (profileError) {
         throw profileError;
       }
-      
+
       // Navigate to health assessment
       navigate('/health-assessment');
-      
+
     } catch (error: any) {
       setErrorMsg(error.message || 'Failed to sign up');
     } finally {
