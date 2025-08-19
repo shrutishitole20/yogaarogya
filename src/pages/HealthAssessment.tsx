@@ -218,7 +218,7 @@ const HealthAssessment: React.FC = () => {
           </div>
           
           <form onSubmit={handleSubmit}>
-            <fieldset disabled={loading || isSubmitting}>
+            <fieldset>
               {console.log('Form disabled state:', loading || isSubmitting, 'loading:', loading, 'isSubmitting:', isSubmitting)}
               <legend className="text-lg font-medium text-gray-700 mb-4">
                 Please select all that apply:
