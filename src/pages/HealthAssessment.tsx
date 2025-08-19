@@ -240,8 +240,15 @@ const HealthAssessment: React.FC = () => {
                         <input
                           id={condition.id}
                           type="checkbox"
-                          checked={selectedConditions[condition.id]}
-                          onChange={() => handleToggleCondition(condition.id)}
+                          checked={!!selectedConditions[condition.id]}
+                          onChange={(e) => {
+                            console.log('Checkbox onChange:', condition.id, e.target.checked);
+                            handleToggleCondition(condition.id);
+                          }}
+                          onClick={(e) => {
+                            console.log('Checkbox onClick:', condition.id);
+                            e.stopPropagation();
+                          }}
                           className="focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 rounded"
                         />
                       </div>
