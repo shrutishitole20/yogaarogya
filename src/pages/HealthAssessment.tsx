@@ -223,6 +223,11 @@ const HealthAssessment: React.FC = () => {
               <legend className="text-lg font-medium text-gray-700 mb-4">
                 Please select all that apply:
               </legend>
+
+              {/* Debug info */}
+              <div className="mb-4 p-2 bg-gray-100 text-xs">
+                <strong>Debug - Selected conditions:</strong> {JSON.stringify(selectedConditions, null, 2)}
+              </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {healthConditions.map(condition => (
