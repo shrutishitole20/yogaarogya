@@ -43,9 +43,26 @@ const HealthAssessment: React.FC = () => {
   useEffect(() => {
     const checkExistingAssessment = async () => {
       if (!user) return;
-      
+
       try {
         setLoading(true);
+
+        // Test connection first
+        console.log('Testing Supabase connection...');
+        try {
+          const { data: testData, error: testError } = await supabase
+            .from('profiles')
+            .select('count', { count: 'exact', head: true });
+
+          if (testError) {
+            console.error('Supabase connection test failed:', testError);
+          } else {
+            console.log('Supabase connection test successful');
+          }
+        } catch (connError) {
+          console.error('Network connectivity issue:', connError);
+        }
+
         const { data, error } = await supabase
           .from('health_assessments')
           .select('*')
