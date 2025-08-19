@@ -46,11 +46,17 @@ const HealthAssessment: React.FC = () => {
           .select('*')
           .eq('user_id', user.id)
           .single();
-        
+
         if (error && error.code !== 'PGRST116') {
+          // If table doesn't exist, skip loading previous data
+          if (error.message?.includes('does not exist')) {
+            console.log('Health assessments table does not exist yet');
+            setLoading(false);
+            return;
+          }
           throw error;
         }
-        
+
         if (data) {
           const conditionState: Record<string, boolean> = {};
           healthConditions.forEach(condition => {
@@ -60,6 +66,9 @@ const HealthAssessment: React.FC = () => {
         }
       } catch (error: any) {
         console.error('Error fetching health assessment:', error);
+        const errorMessage = error?.message || error?.toString() || 'Failed to load health assessment data';
+        console.error('Detailed error:', JSON.stringify(error, null, 2));
+        setErrorMsg(errorMessage);
       } finally {
         setLoading(false);
       }
