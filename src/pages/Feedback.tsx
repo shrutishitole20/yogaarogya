@@ -45,6 +45,9 @@ const Feedback: React.FC = () => {
         }
       } catch (error: any) {
         console.error('Error fetching feedback:', error);
+        const errorMessage = error?.message || error?.toString() || 'Failed to load feedback data';
+        console.error('Detailed error:', JSON.stringify(error, null, 2));
+        setErrorMsg(errorMessage);
       } finally {
         setLoading(false);
       }
