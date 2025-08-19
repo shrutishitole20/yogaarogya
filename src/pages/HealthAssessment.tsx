@@ -101,9 +101,9 @@ const HealthAssessment: React.FC = () => {
         .from('health_assessments')
         .select('id')
         .eq('user_id', user.id)
-        .single();
-      
-      if (fetchError && fetchError.code !== 'PGRST116') {
+        .maybeSingle();
+
+      if (fetchError) {
         throw fetchError;
       }
       
