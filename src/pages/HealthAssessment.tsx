@@ -131,7 +131,10 @@ const HealthAssessment: React.FC = () => {
       navigate('/yoga-recommendations');
       
     } catch (error: any) {
-      setErrorMsg(error.message || 'Failed to save health assessment');
+      console.error('Health assessment submission error:', error);
+      const errorMessage = error?.message || error?.toString() || 'Failed to save health assessment';
+      console.error('Detailed error:', JSON.stringify(error, null, 2));
+      setErrorMsg(`Error: ${errorMessage}`);
     } finally {
       setIsSubmitting(false);
     }
