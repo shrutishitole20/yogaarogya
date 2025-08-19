@@ -78,10 +78,16 @@ const HealthAssessment: React.FC = () => {
   }, [user]);
 
   const handleToggleCondition = (conditionId: string) => {
-    setSelectedConditions(prev => ({
-      ...prev,
-      [conditionId]: !prev[conditionId]
-    }));
+    console.log('Toggle condition clicked:', conditionId);
+    console.log('Current state before toggle:', selectedConditions);
+    setSelectedConditions(prev => {
+      const newState = {
+        ...prev,
+        [conditionId]: !prev[conditionId]
+      };
+      console.log('New state after toggle:', newState);
+      return newState;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
