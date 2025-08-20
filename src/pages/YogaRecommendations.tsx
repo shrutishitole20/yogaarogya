@@ -45,14 +45,14 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       benefits: 'Promotes deep relaxation and stress relief',
       description: 'Lie on your back with legs slightly apart and arms at sides, palms up. Close your eyes and focus on deep, slow breathing for 5-10 minutes.',
       imageUrl: 'https://images.pexels.com/photos/6998214/pexels-photo-6998214.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-      videoUrl: 'https://www.youtube.com/embed/ihO02wUzgks'
+      videoUrl: 'https://www.youtube.com/embed/Xv4dnUpWRLU'
     },
     {
       name: 'Forward Fold (Uttanasana)',
       benefits: 'Calms the mind and relieves stress',
       description: 'Stand with feet hip-width apart. Exhale and hinge at hips to fold forward. Let head hang heavy. Hold and breathe for 1-2 minutes.',
       imageUrl: 'https://images.pexels.com/photos/6698528/pexels-photo-6698528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-      videoUrl: 'https://www.youtube.com/embed/1WCdOCtrHkM'
+      videoUrl: 'https://www.youtube.com/embed/8xHt8wGYC6A'
     },
   ],
   insomnia: [
