@@ -6,7 +6,7 @@ import { supabase } from '../lib/supabase';
 import Layout from '../components/Layout';
 
 // Yoga asana recommendations by condition
-const yogaRecommendations: Record<string, Array<{name: string, benefits: string, description: string, imageUrl: string}>> = {
+const yogaRecommendations: Record<string, Array<{name: string, benefits: string, description: string, imageUrl: string, videoUrl: string}>> = {
   back_pain: [
     {
       name: 'Cat-Cow Pose (Marjaryasana-Bitilasana)',
