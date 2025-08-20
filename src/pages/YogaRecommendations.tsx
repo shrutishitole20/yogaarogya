@@ -273,31 +273,33 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Shoulder Stand (Sarvangasana)',
       benefits: 'Stimulates thyroid gland, improves circulation, and calms the mind',
       description: 'Lie on your back, lift your legs overhead, and support your lower back with your hands. Keep your elbows close together and hold for 30 seconds to 1 minute.',
-      imageUrl: 'https://images.pexels.com/photos/6246676/pexels-photo-6246676.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/6246676/pexels-photo-6246676.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/8vBuJ1GJo5w'
     },
     {
       name: 'Fish Pose (Matsyasana)',
       benefits: 'Stretches the neck and throat, opens the chest, and stimulates the thyroid gland',
       description: 'Lie on your back, lift your chest, and arch your back while resting the crown of your head on the floor. Hold for 30 seconds to 1 minute.',
-      imageUrl: 'https://images.pexels.com/photos/3822585/pexels-photo-3822585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/3822585/pexels-photo-3822585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/JVJBEhPPcUU'
     },
     {
       name: 'Bridge Pose (Setu Bandhasana)',
       benefits: 'Opens chest and improves breathing',
       description: 'Lie on back with knees bent, feet flat. Lift hips toward ceiling, rolling spine off floor. Hold 30-60 seconds while breathing deeply.',
-      imageUrl: 'https://images.pexels.com/photos/3822650/pexels-photo-3822650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/3822650/pexels-photo-3822650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/9UhGvUJjGU4'
     }
-    
   ]
-
 };
 
 const YogaRecommendations: React.FC = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  // State for video modal
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedPose, setSelectedPose] = useState<string | null>(null);
   
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState('');
