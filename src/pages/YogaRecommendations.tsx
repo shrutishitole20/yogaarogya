@@ -140,14 +140,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Victorious Breath (Ujjayi Pranayama)',
       benefits: 'Improves lung capacity and respiratory function',
       description: 'Sit comfortably. Breathe in and out through nose with slight constriction at back of throat, creating an ocean-like sound. Practice for 5 minutes.',
-      imageUrl: 'https://adiyogaashram.com/blog/wp-content/uploads/2024/08/ujaayi-pranayama-psychic-breathing.jpg'
-
+      imageUrl: 'https://adiyogaashram.com/blog/wp-content/uploads/2024/08/ujaayi-pranayama-psychic-breathing.jpg',
+      videoUrl: 'https://www.youtube.com/embed/S6d83BXbRJM'
     },
     {
       name: 'Bridge Pose (Setu Bandhasana)',
       benefits: 'Opens chest and improves breathing',
       description: 'Lie on back with knees bent, feet flat. Lift hips toward ceiling, rolling spine off floor. Hold 30-60 seconds while breathing deeply.',
-      imageUrl: 'https://images.pexels.com/photos/3822650/pexels-photo-3822650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/3822650/pexels-photo-3822650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/9UhGvUJjGU4'
     },
   ],
   diabetes: [
@@ -155,13 +156,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Seated Forward Bend (Paschimottanasana)',
       benefits: 'Stimulates pancreas and helps regulate blood sugar',
       description: 'Sit with legs extended. Inhale, lengthen spine. Exhale, hinge at hips to fold forward, reaching toward feet. Hold 1-3 minutes.',
-      imageUrl: 'https://images.pexels.com/photos/3822191/pexels-photo-3822191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/3822191/pexels-photo-3822191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/KRCjWQ3fTL8'
     },
     {
       name: 'Half Spinal Twist (Ardha Matsyendrasana)',
       benefits: 'Stimulates digestive organs and helps manage blood sugar',
       description: 'Sit with legs extended. Bend right knee and place foot outside left thigh. Twist torso right, placing left elbow outside right knee. Hold, then switch sides.',
-      imageUrl: 'https://www.keralatourism.org/images/yoga/static-banner/large/Ardha_Matsyendrasana_-_The_Spinal_Twist-07032020173900.jpg'
+      imageUrl: 'https://www.keralatourism.org/images/yoga/static-banner/large/Ardha_Matsyendrasana_-_The_Spinal_Twist-07032020173900.jpg',
+      videoUrl: 'https://www.youtube.com/embed/0bAoq8_0SFU'
     },
   ],
   arthritis: [
@@ -169,20 +172,22 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Gentle Wrist and Ankle Rotations',
       benefits: 'Improves joint mobility and reduces stiffness',
       description: 'Sitting comfortably, gently rotate wrists and ankles 5-10 times',
-      imageUrl: 'https://cdn.shopify.com/s/files/1/0585/3845/9329/files/Wrist-Rotation.jpg'
-
+      imageUrl: 'https://cdn.shopify.com/s/files/1/0585/3845/9329/files/Wrist-Rotation.jpg',
+      videoUrl: 'https://www.youtube.com/embed/hzf_3WYLMY4'
     },
     {
       name: 'Seated Twist (Ardha Matsyendrasana)',
       benefits: 'Massages abdominal organs and aids digestion',
       description: 'Sit with legs extended. Bend right knee and place foot outside left thigh. Twist torso right, placing left elbow outside right knee. Hold, then switch sides.',
-      imageUrl: 'https://www.keralatourism.org/images/yoga/static-banner/large/Ardha_Matsyendrasana_-_The_Spinal_Twist-07032020173900.jpg'
+      imageUrl: 'https://www.keralatourism.org/images/yoga/static-banner/large/Ardha_Matsyendrasana_-_The_Spinal_Twist-07032020173900.jpg',
+      videoUrl: 'https://www.youtube.com/embed/0bAoq8_0SFU'
     },
     {
       name: 'Forward Fold (Uttanasana)',
       benefits: 'Calms the mind and relieves stress',
       description: 'Stand with feet hip-width apart. Exhale and hinge at hips to fold forward. Let head hang heavy. Hold and breathe for 1-2 minutes.',
-      imageUrl: 'https://images.pexels.com/photos/6698528/pexels-photo-6698528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/6698528/pexels-photo-6698528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/1WCdOCtrHkM'
 
     },
   ],
