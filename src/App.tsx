@@ -6,6 +6,7 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import HealthAssessment from './pages/HealthAssessment';
 import YogaRecommendations from './pages/YogaRecommendations';
+import YogaSession from './pages/YogaSession';
 import Feedback from './pages/Feedback';
 
 function App() {
