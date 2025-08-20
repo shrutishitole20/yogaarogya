@@ -12,14 +12,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Cat-Cow Pose (Marjaryasana-Bitilasana)',
       benefits: 'Improves spine flexibility and relieves back tension',
       description: 'Start on hands and knees. Inhale, arch your back and look up (Cow). Exhale, round your spine and tuck your chin (Cat). Repeat 10-15 times.',
-      imageUrl: 'https://images.pexels.com/photos/17572172/pexels-photo-17572172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/17572172/pexels-photo-17572172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/KpNX4nV2WxE'
     },
     {
       name: 'Child\'s Pose (Balasana)',
       benefits: 'Gently stretches the lower back and promotes relaxation',
       description: 'Kneel on the floor, touch your big toes together, sit on your heels, and then lay your torso down between your thighs. Extend arms forward or alongside body.',
-      imageUrl: 'https://images.pexels.com/photos/4534597/pexels-photo-4534597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/4534597/pexels-photo-4534597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/YQampHZSJRs'
     },
   ],
   neck_pain: [
