@@ -20,6 +20,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/health-assessment" element={<HealthAssessment />} />
           <Route path="/yoga-recommendations" element={<YogaRecommendations />} />
+          <Route path="/yoga-session" element={<YogaSession />} />
           <Route path="/feedback" element={<Feedback />} />
         </Routes>
       </Router>
