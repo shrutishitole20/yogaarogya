@@ -517,13 +517,23 @@ const YogaRecommendations: React.FC = () => {
                 onClick={() => {
                   setSelectedVideo(null);
                   setSelectedPose(null);
+                  setVideoLoading(false);
                 }}
                 className="text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <X className="h-6 w-6" />
               </button>
             </div>
-            <div className="aspect-video">
+            <div className="aspect-video relative">
+              {/* Loading spinner while video loads */}
+              {videoLoading && (
+                <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+                    <p className="text-gray-600 text-sm">Loading video...</p>
+                  </div>
+                </div>
+              )}
               {/* Lazy loaded YouTube iframe */}
               <iframe
                 src={selectedVideo}
@@ -533,6 +543,8 @@ const YogaRecommendations: React.FC = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 loading="lazy"
+                onLoad={() => setVideoLoading(false)}
+                style={{ display: videoLoading ? 'none' : 'block' }}
               />
             </div>
             <div className="p-4 text-center">
