@@ -300,6 +300,7 @@ const YogaRecommendations: React.FC = () => {
   // State for video modal
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [selectedPose, setSelectedPose] = useState<string | null>(null);
+  const [videoLoading, setVideoLoading] = useState(false);
   
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState('');
