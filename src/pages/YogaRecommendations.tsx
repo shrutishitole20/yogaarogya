@@ -92,15 +92,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Gentle Joint Rotations',
       benefits: 'Improves joint mobility and reduces stiffness',
       description: 'Sitting comfortably, gently rotate each major joint (wrists, elbows, shoulders, ankles, knees, hips) 5-10 times in each direction.',
-      imageUrl: 'https://www.dmoose.com/cdn/shop/articles/1_Main_Image_5db14a4e-660d-43ac-8b67-70e00c7962e1.jpg?v=1670938957'
-
+      imageUrl: 'https://www.dmoose.com/cdn/shop/articles/1_Main_Image_5db14a4e-660d-43ac-8b67-70e00c7962e1.jpg?v=1670938957',
+      videoUrl: 'https://www.youtube.com/embed/YOztP47DGfM'
     },
     {
       name: 'Mountain Pose (Tadasana)',
       benefits: 'Improves posture and body alignment',
       description: 'Stand with feet together or hip-width apart. Distribute weight evenly through feet. Engage legs, lift chest, relax shoulders. Breathe deeply for 30-60 seconds.',
-      imageUrl: 'https://media.istockphoto.com/id/1366703229/vector/palm-tree-pose-urdhva-hastasana-upward-hand-stretch-pose-upward-salute-raised-hands-pose.jpg?s=612x612&w=0&k=20&c=rY1lIudAf5GTFGFQq1FP_aIMOSXDuwBgTp5ipngSu5E='
-
+      imageUrl: 'https://media.istockphoto.com/id/1366703229/vector/palm-tree-pose-urdhva-hastasana-upward-hand-stretch-pose-upward-salute-raised-hands-pose.jpg?s=612x612&w=0&k=20&c=rY1lIudAf5GTFGFQq1FP_aIMOSXDuwBgTp5ipngSu5E=',
+      videoUrl: 'https://www.youtube.com/embed/3lKyJZjUWt0'
     },
   ],
   high_blood_pressure: [
@@ -108,14 +108,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Easy Seated Pose (Sukhasana) with Deep Breathing',
       benefits: 'Lowers blood pressure through relaxation',
       description: 'Sit cross-legged with hands on knees. Keep spine straight. Practice slow, deep breathing for 5-10 minutes.',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkPWttz7UEMIgBbvZUEvLFHPyxdwqtRSGKNg&s'
-
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkPWttz7UEMIgBbvZUEvLFHPyxdwqtRSGKNg&s',
+      videoUrl: 'https://www.youtube.com/embed/EWQtTem8aJI'
     },
     {
       name: 'Bound Angle Pose (Baddha Konasana)',
       benefits: 'Reduces stress and lowers blood pressure',
       description: 'Sit with soles of feet together, knees wide. Hold feet with hands. Sit tall and breathe deeply for 1-3 minutes.',
-      imageUrl: 'https://images.pexels.com/photos/7592496/pexels-photo-7592496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/7592496/pexels-photo-7592496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/i2kgPkYwOFE'
     },
   ],
   obesity: [
@@ -123,14 +124,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Sun Salutation (Surya Namaskar)',
       benefits: 'Boosts metabolism and promotes weight loss',
       description: 'A sequence of 12 flowing postures that provide a full-body workout. Practice 3-5 rounds daily, gradually increasing to 10-12 rounds.',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaWAVQOAa06BN2AjF8wPa-2PugIURgDF66Iw&s'
-
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaWAVQOAa06BN2AjF8wPa-2PugIURgDF66Iw&s',
+      videoUrl: 'https://www.youtube.com/embed/1Y_Omt2xW8M'
     },
     {
       name: 'Boat Pose (Navasana)',
       benefits: 'Strengthens core muscles and boosts metabolism',
       description: 'Sit with knees bent. Lean back slightly while lifting feet off floor. Extend arms forward. Form a V-shape with body. Hold for 30-60 seconds.',
-      imageUrl: 'https://images.pexels.com/photos/3758138/pexels-photo-3758138.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/3758138/pexels-photo-3758138.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/VzttsHBNTCM'
     },
   ],
   respiratory_issues: [
