@@ -454,16 +454,26 @@ const YogaRecommendations: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {recommendations.map((rec, index) => (
-                    <div 
+                    <div
                       key={`${rec.name}-${index}`}
-                      className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                      onClick={() => {
+                        setSelectedVideo(rec.videoUrl);
+                        setSelectedPose(rec.name);
+                      }}
                     >
-                      <div className="h-48 overflow-hidden">
-                        <img 
-                          src={rec.imageUrl} 
-                          alt={rec.name} 
+                      <div className="h-48 overflow-hidden relative">
+                        <img
+                          src={rec.imageUrl}
+                          alt={rec.name}
                           className="w-full h-full object-cover object-center"
                         />
+                        {/* Play button overlay */}
+                        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                          <div className="bg-white bg-opacity-90 rounded-full p-3">
+                            <Play className="h-8 w-8 text-purple-600" />
+                          </div>
+                        </div>
                       </div>
                       <div className="p-4">
                         <span className="inline-block px-2 py-1 text-xs font-semibold text-purple-800 bg-purple-100 rounded-full mb-2">
@@ -471,7 +481,11 @@ const YogaRecommendations: React.FC = () => {
                         </span>
                         <h3 className="text-lg font-medium text-gray-800 mb-2">{rec.name}</h3>
                         <p className="text-sm text-purple-700 font-medium mb-2">{rec.benefits}</p>
-                        <p className="text-sm text-gray-600">{rec.description}</p>
+                        <p className="text-sm text-gray-600 mb-3">{rec.description}</p>
+                        <div className="flex items-center text-sm text-purple-600 font-medium">
+                          <Play className="h-4 w-4 mr-1" />
+                          Click to watch video
+                        </div>
                       </div>
                     </div>
                   ))}
