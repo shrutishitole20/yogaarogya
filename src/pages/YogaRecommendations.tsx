@@ -484,9 +484,31 @@ const YogaRecommendations: React.FC = () => {
                         <h3 className="text-lg font-medium text-gray-800 mb-2">{rec.name}</h3>
                         <p className="text-sm text-purple-700 font-medium mb-2">{rec.benefits}</p>
                         <p className="text-sm text-gray-600 mb-3">{rec.description}</p>
-                        <div className="flex items-center text-sm text-purple-600 font-medium">
-                          <Play className="h-4 w-4 mr-1" />
-                          Click to watch video
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center text-sm text-purple-600 font-medium">
+                            <Play className="h-4 w-4 mr-1" />
+                            Click to watch video
+                          </div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate('/yoga-session', {
+                                state: {
+                                  pose: {
+                                    name: rec.name,
+                                    duration: 300,
+                                    description: rec.description,
+                                    instructions: rec.description,
+                                    category: rec.forCondition,
+                                    videoUrl: rec.videoUrl
+                                  }
+                                }
+                              });
+                            }}
+                            className="px-3 py-1 bg-green-600 text-white text-xs rounded-md hover:bg-green-700 transition-colors"
+                          >
+                            Start Session
+                          </button>
                         </div>
                       </div>
                     </div>
