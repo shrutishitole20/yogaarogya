@@ -219,29 +219,29 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Child\'s Pose (Balasana)',
       benefits: 'Gently stretches the lower back and promotes relaxation',
       description: 'Kneel on the floor, touch your big toes together, sit on your heels, and then lay your torso down between your thighs. Extend arms forward or alongside body.',
-      imageUrl: 'https://images.pexels.com/photos/4534597/pexels-photo-4534597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/4534597/pexels-photo-4534597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/YQampHZSJRs'
     },
     {
       name: 'Downward-Facing Dog (Adho Mukha Svanasana)',
       benefits: 'Strengthens arms and legs, stretches the spine and hamstrings, improves circulation, and relieves fatigue',
       description: 'Start on hands and knees, tuck your toes, and lift your hips up and back to form an inverted V-shape. Keep your hands shoulder-width apart and feet hip-width apart. Hold the pose for 1-3 minutes while breathing deeply.',
-      imageUrl: 'https://images.pexels.com/photos/4534578/pexels-photo-4534578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/4534578/pexels-photo-4534578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/DP3xpw2xtVE'
     },
     {
       name: 'Lotus Pose (Padmasana)',
       benefits: 'Calms the mind, improves posture, enhances digestion, and prepares the body for meditation',
       description: 'Sit with legs crossed, placing each foot on the opposite thigh with soles facing upward. Keep your spine straight, hands resting on knees, and eyes gently closed. Focus on your breath and remain in the pose for 5–15 minutes.',
-      imageUrl: 'https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/2-cKoBT0YZ8'
     },
     {
       name: 'Corpse Pose (Savasana) with Deep Breathing',
       benefits: 'Promotes deep relaxation and stress relief',
       description: 'Lie on your back with legs slightly apart and arms at sides, palms up. Close your eyes and focus on deep, slow breathing for 5-10 minutes.',
-      imageUrl: 'https://images.pexels.com/photos/6998214/pexels-photo-6998214.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/6998214/pexels-photo-6998214.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/ihO02wUzgks'
     }
   ],
   depression : [
@@ -249,22 +249,22 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Cobra Pose (Bhujangasana)',
       benefits: 'Strengthens the spine, opens the chest and shoulders, improves posture, and helps relieve stress and fatigue',
       description: 'Lie on your stomach with legs extended and palms placed under the shoulders. Inhale and gently lift your chest off the ground by pressing into your hands, keeping elbows slightly bent. Hold for 15–30 seconds while breathing deeply, then release back down.',
-      imageUrl: 'https://images.pexels.com/photos/3823076/pexels-photo-3823076.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/3823076/pexels-photo-3823076.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/z21SCcKogWQ'
     },
     {
       name: 'Tree Pose (Vrikshasana)',
       benefits: 'Improves balance and stability, strengthens legs and core, and enhances focus and concentration',
       description: 'Stand tall, shift your weight onto one leg, and place the sole of the opposite foot on the inner thigh or calf (avoid the knee). Bring palms together in prayer position at the chest or overhead. Hold for 30 seconds to 1 minute while maintaining steady breath, then switch sides.',
-      imageUrl: 'https://images.pexels.com/photos/9004274/pexels-photo-9004274.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
-
+      imageUrl: 'https://images.pexels.com/photos/9004274/pexels-photo-9004274.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/IfiN2y7vGGo'
     },
     {
       name: 'Downward-Facing Dog (Adho Mukha Svanasana)',
       benefits: 'Strengthens arms and legs, stretches the spine and hamstrings, improves circulation, and relieves fatigue',
       description: 'Start on hands and knees, tuck your toes, and lift your hips up and back to form an inverted V-shape. Keep your hands shoulder-width apart and feet hip-width apart. Hold the pose for 1-3 minutes while breathing deeply.',
-      imageUrl: 'https://images.pexels.com/photos/4534578/pexels-photo-4534578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/4534578/pexels-photo-4534578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/DP3xpw2xtVE'
 
     }
   ],
