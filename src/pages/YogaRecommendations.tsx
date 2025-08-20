@@ -459,6 +459,7 @@ const YogaRecommendations: React.FC = () => {
                       key={`${rec.name}-${index}`}
                       className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer"
                       onClick={() => {
+                        setVideoLoading(true);
                         setSelectedVideo(rec.videoUrl);
                         setSelectedPose(rec.name);
                       }}
