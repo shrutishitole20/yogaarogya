@@ -309,6 +309,7 @@ const YogaRecommendations: React.FC = () => {
     benefits: string,
     description: string,
     imageUrl: string,
+    videoUrl: string,
     forCondition: string
   }>>([]);
 
