@@ -44,14 +44,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Corpse Pose (Savasana) with Deep Breathing',
       benefits: 'Promotes deep relaxation and stress relief',
       description: 'Lie on your back with legs slightly apart and arms at sides, palms up. Close your eyes and focus on deep, slow breathing for 5-10 minutes.',
-      imageUrl: 'https://images.pexels.com/photos/6998214/pexels-photo-6998214.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/6998214/pexels-photo-6998214.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/ihO02wUzgks'
     },
     {
       name: 'Forward Fold (Uttanasana)',
       benefits: 'Calms the mind and relieves stress',
       description: 'Stand with feet hip-width apart. Exhale and hinge at hips to fold forward. Let head hang heavy. Hold and breathe for 1-2 minutes.',
-      imageUrl: 'https://images.pexels.com/photos/6698528/pexels-photo-6698528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/6698528/pexels-photo-6698528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/1WCdOCtrHkM'
     },
   ],
   insomnia: [
@@ -59,16 +60,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Legs Up The Wall (Viparita Karani)',
       benefits: 'Calms the nervous system and promotes better sleep',
       description: 'Sit with one hip against a wall. Swing legs up the wall as you lie back. Rest with buttocks near or against wall and legs extended up. Hold 5-15 minutes.',
-      imageUrl: 'https://media.yogauonline.com/app/uploads/2023/07/09234339/0-Legs-up-the-Wall-Pose-or-Viparita-Karani-a-restorative-yoga-pose.webp'
-
+      imageUrl: 'https://media.yogauonline.com/app/uploads/2023/07/09234339/0-Legs-up-the-Wall-Pose-or-Viparita-Karani-a-restorative-yoga-pose.webp',
+      videoUrl: 'https://www.youtube.com/embed/pUcmxKCGpXU'
     },
     {
       name: 'Supine Spinal Twist (Supta Matsyendrasana)',
       benefits: 'Releases tension in the spine and promotes relaxation',
       description: 'Lie on back, bring knees to chest. Extend arms out in T position. Drop knees to right while turning head left. Hold, then switch sides.',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM72G6ohN5Gx6ll8Z9ndenhGZGVn-DY0NF-Q&s'
-
-
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM72G6ohN5Gx6ll8Z9ndenhGZGVn-DY0NF-Q&s',
+      videoUrl: 'https://www.youtube.com/embed/qmPdUZnPqr4'
     },
   ],
   digestive_issues: [
@@ -76,14 +76,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Wind-Relieving Pose (Pawanmuktasana)',
       benefits: 'Relieves gas and improves digestion',
       description: 'Lie on back. Bring right knee to chest and hold for 30 seconds. Release and repeat with left leg. Then bring both knees to chest and hold.',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGdcENKPqVq3pyCWtcwdOo9bvugRWj3KWQvg&s'
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGdcENKPqVq3pyCWtcwdOo9bvugRWj3KWQvg&s',
+      videoUrl: 'https://www.youtube.com/embed/X0DCQRxKBGI'
     },
     {
       name: 'Seated Twist (Ardha Matsyendrasana)',
       benefits: 'Massages abdominal organs and aids digestion',
       description: 'Sit with legs extended. Bend right knee and place foot outside left thigh. Twist torso right, placing left elbow outside right knee. Hold, then switch sides.',
-      imageUrl: 'https://www.keralatourism.org/images/yoga/static-banner/large/Ardha_Matsyendrasana_-_The_Spinal_Twist-07032020173900.jpg'
-
+      imageUrl: 'https://www.keralatourism.org/images/yoga/static-banner/large/Ardha_Matsyendrasana_-_The_Spinal_Twist-07032020173900.jpg',
+      videoUrl: 'https://www.youtube.com/embed/0bAoq8_0SFU'
     },
   ],
   joint_pain: [
