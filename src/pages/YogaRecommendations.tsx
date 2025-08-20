@@ -28,14 +28,15 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Shoulder Rolls',
       benefits: 'Releases tension in shoulders and neck',
       description: 'Inhale as you roll your shoulders up towards your ears, then exhale as you roll them back and down. Repeat 8-10 times, then reverse direction.',
-      imageUrl: "https://d5sbbf6usl3xq.cloudfront.net/standing_shoulder_rolls_bent_elbows___yoga.png"
-
+      imageUrl: "https://d5sbbf6usl3xq.cloudfront.net/standing_shoulder_rolls_bent_elbows___yoga.png",
+      videoUrl: 'https://www.youtube.com/embed/QANnCNXd5q8'
     },
     {
       name: 'Seated Neck Release',
       benefits: 'Stretches side neck muscles and reduces stiffness',
       description: 'Sit tall. Gently tilt right ear toward right shoulder until you feel a stretch. Hold 30 seconds. Repeat on left side.',
-      imageUrl: 'https://images.pexels.com/photos/8534778/pexels-photo-8534778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      imageUrl: 'https://images.pexels.com/photos/8534778/pexels-photo-8534778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/SedzSwEcqSw'
     },
   ],
   stress: [
