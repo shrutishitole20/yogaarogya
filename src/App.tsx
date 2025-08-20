@@ -12,20 +12,22 @@ import Feedback from './pages/Feedback';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/health-assessment" element={<HealthAssessment />} />
-          <Route path="/yoga-recommendations" element={<YogaRecommendations />} />
-          <Route path="/yoga-session" element={<YogaSession />} />
-          <Route path="/feedback" element={<Feedback />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/health-assessment" element={<HealthAssessment />} />
+            <Route path="/yoga-recommendations" element={<YogaRecommendations />} />
+            <Route path="/yoga-session" element={<YogaSession />} />
+            <Route path="/feedback" element={<Feedback />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
