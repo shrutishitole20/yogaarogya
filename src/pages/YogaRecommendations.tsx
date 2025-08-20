@@ -196,23 +196,23 @@ const yogaRecommendations: Record<string, Array<{name: string, benefits: string,
       name: 'Child\'s Pose (Balasana)',
       benefits: 'Gently stretches the lower back and promotes relaxation',
       description: 'Kneel on the floor, touch your big toes together, sit on your heels, and then lay your torso down between your thighs. Extend arms forward or alongside body.',
-      imageUrl: 'https://images.pexels.com/photos/4534597/pexels-photo-4534597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/4534597/pexels-photo-4534597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/YQampHZSJRs'
     },
     {
       name: 'Corpse Pose (Savasana) with Deep Breathing',
       benefits: 'Promotes deep relaxation and stress relief',
       description: 'Lie on your back with legs slightly apart and arms at sides, palms up. Close your eyes and focus on deep, slow breathing for 5-10 minutes.',
-      imageUrl: 'https://images.pexels.com/photos/6998214/pexels-photo-6998214.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
+      imageUrl: 'https://images.pexels.com/photos/6998214/pexels-photo-6998214.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      videoUrl: 'https://www.youtube.com/embed/ihO02wUzgks'
     },
     {
       name: 'Surya Namaskar (Sun Salutation)',
       benefits: 'Improves flexibility, strengthens muscles and joints, boosts blood circulation, and energizes the body',
       description: 'A dynamic sequence of 12 yoga poses performed in a flowing manner, combining breath with movement. Each round includes forward and backward bending, engaging different muscle groups and enhancing overall vitality.',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaWAVQOAa06BN2AjF8wPa-2PugIURgDF66Iw&s'
-
-    }    
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaWAVQOAa06BN2AjF8wPa-2PugIURgDF66Iw&s',
+      videoUrl: 'https://www.youtube.com/embed/1Y_Omt2xW8M'
+    }
   ],
   migraine: [
     {
