@@ -40,7 +40,8 @@ const Home: React.FC = () => {
 
         if (error) {
           console.error('Error fetching feedback:', error);
-          return;
+          console.error('Detailed error:', JSON.stringify(error, null, 2));
+          // Don't return here, let it fall through to use fallback testimonials
         }
 
         if (data && data.length > 0) {
