@@ -215,42 +215,43 @@ const Home: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-purple-800 p-6 rounded-xl">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              <p className="text-purple-100 mb-4">
-                "The personalized yoga recommendations helped me manage my back pain effectively. I feel relieved after just 3 days!"
-              </p>
-              <div className="font-medium">Lahari..., 18</div>
+          {feedbackLoading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-300"></div>
             </div>
-            
-            <div className="bg-purple-800 p-6 rounded-xl">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              <p className="text-purple-100 mb-4">
-                "As someone with high blood pressure, finding the right exercise was challenging. YOGAAROGYA's recommendations were perfect for my condition."
-              </p>
-              <div className="font-medium">Phani Kumar.., 52</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {displayedFeedback.map((feedback, index) => (
+                <div key={feedback.id || index} className="bg-purple-800 p-6 rounded-xl">
+                  <div className="flex items-center mb-4">
+                    {[...Array(feedback.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-purple-100 mb-4">
+                    "{feedback.suggestions}"
+                  </p>
+                  <div className="font-medium">
+                    {feedback.profiles?.name || 'Anonymous User'}
+                    {userFeedback.length > 0 && feedback.created_at && (
+                      <span className="text-purple-300 text-sm ml-2">
+                        • {new Date(feedback.created_at).toLocaleDateString()}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-            
-            <div className="bg-purple-800 p-6 rounded-xl">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              <p className="text-purple-100 mb-4">
-                "I've struggled with Migraine for months. The aasanas recommended by YOGAAROGYA have become an essential part of my daily routine."
-              </p>
-              <div className="font-medium">Siri., 20</div>
-            </div>
+          )}
+
+          {/* Show link to feedback page */}
+          <div className="text-center mt-8">
+            <Link
+              to="/feedback"
+              className="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              Share Your Experience <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
