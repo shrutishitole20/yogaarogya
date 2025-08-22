@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, BarChart, Heart, Shield } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 import Layout from '../components/Layout';
 
 const Home: React.FC = () => {
