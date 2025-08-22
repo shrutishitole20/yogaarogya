@@ -1,9 +1,114 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, BarChart, Heart, Shield } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 import Layout from '../components/Layout';
 
+interface UserFeedback {
+  id: string;
+  rating: number;
+  suggestions: string;
+  created_at: string;
+  user_id?: string;
+  profiles?: {
+    name: string;
+  };
+}
+
 const Home: React.FC = () => {
+  const [userFeedback, setUserFeedback] = useState<UserFeedback[]>([]);
+  const [feedbackLoading, setFeedbackLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserFeedback = async () => {
+      try {
+        setFeedbackLoading(true);
+        // First try to fetch feedback with user profile information
+        const { data, error } = await supabase
+          .from('feedback')
+          .select(`
+            id,
+            rating,
+            suggestions,
+            created_at,
+            user_id
+          `)
+          .gte('rating', 4) // Only show 4-5 star ratings
+          .not('suggestions', 'is', null) // Only show feedback with comments
+          .order('created_at', { ascending: false })
+          .limit(6); // Get 6 feedback items to show 3 random ones
+
+        if (error) {
+          console.error('Error fetching feedback:', error);
+          console.error('Detailed error:', JSON.stringify(error, null, 2));
+          // Don't return here, let it fall through to use fallback testimonials
+        }
+
+        if (data && data.length > 0 && !error) {
+          try {
+            // Get user names for each feedback
+            const feedbackWithNames = await Promise.all(
+              data.map(async (feedback) => {
+                try {
+                  const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('name')
+                    .eq('id', feedback.user_id)
+                    .maybeSingle();
+
+                  return {
+                    ...feedback,
+                    profiles: { name: profile?.name || 'Anonymous User' }
+                  };
+                } catch (profileError) {
+                  console.log('Error fetching profile for feedback:', profileError);
+                  return {
+                    ...feedback,
+                    profiles: { name: 'Anonymous User' }
+                  };
+                }
+              })
+            );
+
+            // Randomly select 3 feedback items
+            const shuffled = feedbackWithNames.sort(() => 0.5 - Math.random());
+            setUserFeedback(shuffled.slice(0, 3));
+          } catch (processingError) {
+            console.error('Error processing feedback:', processingError);
+            // Fall through to use fallback testimonials
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching feedback:', error);
+      } finally {
+        setFeedbackLoading(false);
+      }
+    };
+
+    fetchUserFeedback();
+  }, []);
+
+  // Fallback testimonials if no real feedback is available
+  const fallbackTestimonials = [
+    {
+      rating: 5,
+      suggestions: "The personalized yoga recommendations helped me manage my back pain effectively. I feel relieved after just 3 days!",
+      profiles: { name: "Lahari" }
+    },
+    {
+      rating: 5,
+      suggestions: "As someone with high blood pressure, finding the right exercise was challenging. YOGAAROGYA's recommendations were perfect for my condition.",
+      profiles: { name: "Phani Kumar" }
+    },
+    {
+      rating: 5,
+      suggestions: "I've struggled with Migraine for months. The aasanas recommended by YOGAAROGYA have become an essential part of my daily routine.",
+      profiles: { name: "Siri" }
+    }
+  ];
+
+  const displayedFeedback = userFeedback.length > 0 ? userFeedback : fallbackTestimonials;
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -141,42 +246,43 @@ const Home: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-purple-800 p-6 rounded-xl">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              <p className="text-purple-100 mb-4">
-                "The personalized yoga recommendations helped me manage my back pain effectively. I feel relieved after just 3 days!"
-              </p>
-              <div className="font-medium">Lahari..., 18</div>
+          {feedbackLoading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-300"></div>
             </div>
-            
-            <div className="bg-purple-800 p-6 rounded-xl">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              <p className="text-purple-100 mb-4">
-                "As someone with high blood pressure, finding the right exercise was challenging. YOGAAROGYA's recommendations were perfect for my condition."
-              </p>
-              <div className="font-medium">Phani Kumar.., 52</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {displayedFeedback.map((feedback, index) => (
+                <div key={feedback.id || index} className="bg-purple-800 p-6 rounded-xl">
+                  <div className="flex items-center mb-4">
+                    {[...Array(feedback.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-purple-100 mb-4">
+                    "{feedback.suggestions}"
+                  </p>
+                  <div className="font-medium">
+                    {feedback.profiles?.name || 'Anonymous User'}
+                    {userFeedback.length > 0 && feedback.created_at && (
+                      <span className="text-purple-300 text-sm ml-2">
+                        • {new Date(feedback.created_at).toLocaleDateString()}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-            
-            <div className="bg-purple-800 p-6 rounded-xl">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              <p className="text-purple-100 mb-4">
-                "I've struggled with Migraine for months. The aasanas recommended by YOGAAROGYA have become an essential part of my daily routine."
-              </p>
-              <div className="font-medium">Siri., 20</div>
-            </div>
+          )}
+
+          {/* Show link to feedback page */}
+          <div className="text-center mt-8">
+            <Link
+              to="/feedback"
+              className="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              Share Your Experience <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

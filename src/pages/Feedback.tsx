@@ -30,9 +30,9 @@ const Feedback: React.FC = () => {
           .from('feedback')
           .select('*')
           .eq('user_id', user.id)
-          .single();
-        
-        if (error && error.code !== 'PGRST116') {
+          .maybeSingle();
+
+        if (error) {
           throw error;
         }
         
@@ -44,6 +44,9 @@ const Feedback: React.FC = () => {
         }
       } catch (error: any) {
         console.error('Error fetching feedback:', error);
+        const errorMessage = error?.message || error?.toString() || 'Failed to load feedback data';
+        console.error('Detailed error:', JSON.stringify(error, null, 2));
+        setErrorMsg(errorMessage);
       } finally {
         setLoading(false);
       }

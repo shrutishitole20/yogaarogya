@@ -31,26 +31,54 @@ const HealthAssessment: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedConditions, setSelectedConditions] = useState<Record<string, boolean>>(
-    Object.fromEntries(healthConditions.map(condition => [condition.id, false]))
-  );
+  const [selectedConditions, setSelectedConditions] = useState<Record<string, boolean>>(() => {
+    const initialState: Record<string, boolean> = {};
+    healthConditions.forEach(condition => {
+      initialState[condition.id] = false;
+    });
+    console.log('Initial state created:', initialState);
+    return initialState;
+  });
 
   useEffect(() => {
     const checkExistingAssessment = async () => {
       if (!user) return;
-      
+
       try {
         setLoading(true);
+
+        // Test connection first
+        console.log('Testing Supabase connection...');
+        try {
+          const { data: testData, error: testError } = await supabase
+            .from('profiles')
+            .select('count', { count: 'exact', head: true });
+
+          if (testError) {
+            console.error('Supabase connection test failed:', testError);
+          } else {
+            console.log('Supabase connection test successful');
+          }
+        } catch (connError) {
+          console.error('Network connectivity issue:', connError);
+        }
+
         const { data, error } = await supabase
           .from('health_assessments')
           .select('*')
           .eq('user_id', user.id)
-          .single();
-        
+          .maybeSingle();
+
         if (error && error.code !== 'PGRST116') {
+          // If table doesn't exist, skip loading previous data
+          if (error.message?.includes('does not exist')) {
+            console.log('Health assessments table does not exist yet');
+            setLoading(false);
+            return;
+          }
           throw error;
         }
-        
+
         if (data) {
           const conditionState: Record<string, boolean> = {};
           healthConditions.forEach(condition => {
@@ -60,6 +88,9 @@ const HealthAssessment: React.FC = () => {
         }
       } catch (error: any) {
         console.error('Error fetching health assessment:', error);
+        const errorMessage = error?.message || error?.toString() || 'Failed to load health assessment data';
+        console.error('Detailed error:', JSON.stringify(error, null, 2));
+        setErrorMsg(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -69,10 +100,16 @@ const HealthAssessment: React.FC = () => {
   }, [user]);
 
   const handleToggleCondition = (conditionId: string) => {
-    setSelectedConditions(prev => ({
-      ...prev,
-      [conditionId]: !prev[conditionId]
-    }));
+    console.log('Toggle condition clicked:', conditionId);
+    console.log('Current state before toggle:', selectedConditions);
+    setSelectedConditions(prev => {
+      const newState = {
+        ...prev,
+        [conditionId]: !prev[conditionId]
+      };
+      console.log('New state after toggle:', newState);
+      return newState;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -86,27 +123,38 @@ const HealthAssessment: React.FC = () => {
     try {
       setIsSubmitting(true);
       setErrorMsg('');
-      
+
+      console.log('Starting health assessment submission...');
+      console.log('Selected conditions:', selectedConditions);
+      console.log('User ID:', user.id);
+
       // Check if user already has an assessment
       const { data, error: fetchError } = await supabase
         .from('health_assessments')
         .select('id')
         .eq('user_id', user.id)
-        .single();
-      
-      if (fetchError && fetchError.code !== 'PGRST116') {
+        .maybeSingle();
+
+      if (fetchError) {
+        console.error('Error fetching existing assessment:', fetchError);
         throw fetchError;
       }
-      
+
       if (data) {
+        console.log('Updating existing assessment with ID:', data.id);
         // Update existing assessment
         const { error: updateError } = await supabase
           .from('health_assessments')
           .update(selectedConditions)
           .eq('id', data.id);
-        
-        if (updateError) throw updateError;
+
+        if (updateError) {
+          console.error('Update error:', updateError);
+          throw updateError;
+        }
+        console.log('Assessment updated successfully');
       } else {
+        console.log('Creating new assessment');
         // Create new assessment
         const { error: insertError } = await supabase
           .from('health_assessments')
@@ -114,15 +162,23 @@ const HealthAssessment: React.FC = () => {
             user_id: user.id,
             ...selectedConditions
           });
-        
-        if (insertError) throw insertError;
+
+        if (insertError) {
+          console.error('Insert error:', insertError);
+          throw insertError;
+        }
+        console.log('Assessment created successfully');
       }
-      
+
+      console.log('Navigating to yoga recommendations...');
       // Navigate to recommendations page
       navigate('/yoga-recommendations');
       
     } catch (error: any) {
-      setErrorMsg(error.message || 'Failed to save health assessment');
+      console.error('Health assessment submission error:', error);
+      const errorMessage = error?.message || error?.toString() || 'Failed to save health assessment';
+      console.error('Detailed error:', JSON.stringify(error, null, 2));
+      setErrorMsg(`Error: ${errorMessage}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -184,7 +240,8 @@ const HealthAssessment: React.FC = () => {
           </div>
           
           <form onSubmit={handleSubmit}>
-            <fieldset disabled={loading || isSubmitting}>
+            <fieldset>
+              {console.log('Form disabled state:', loading || isSubmitting, 'loading:', loading, 'isSubmitting:', isSubmitting)}
               <legend className="text-lg font-medium text-gray-700 mb-4">
                 Please select all that apply:
               </legend>
@@ -205,8 +262,15 @@ const HealthAssessment: React.FC = () => {
                         <input
                           id={condition.id}
                           type="checkbox"
-                          checked={selectedConditions[condition.id]}
-                          onChange={() => handleToggleCondition(condition.id)}
+                          checked={!!selectedConditions[condition.id]}
+                          onChange={(e) => {
+                            console.log('Checkbox onChange:', condition.id, e.target.checked);
+                            handleToggleCondition(condition.id);
+                          }}
+                          onClick={(e) => {
+                            console.log('Checkbox onClick:', condition.id);
+                            e.stopPropagation();
+                          }}
                           className="focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 rounded"
                         />
                       </div>
