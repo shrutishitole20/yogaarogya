@@ -22,7 +22,7 @@ const Home: React.FC = () => {
     const fetchUserFeedback = async () => {
       try {
         setFeedbackLoading(true);
-        // Fetch feedback with user profile information, only show positive feedback (4-5 stars)
+        // First try to fetch feedback with user profile information
         const { data, error } = await supabase
           .from('feedback')
           .select(`
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
             rating,
             suggestions,
             created_at,
-            profiles!inner(name)
+            user_id
           `)
           .gte('rating', 4) // Only show 4-5 star ratings
           .not('suggestions', 'is', null) // Only show feedback with comments
