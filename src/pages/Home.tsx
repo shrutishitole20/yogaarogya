@@ -9,6 +9,7 @@ interface UserFeedback {
   rating: number;
   suggestions: string;
   created_at: string;
+  user_id?: string;
   profiles?: {
     name: string;
   };
