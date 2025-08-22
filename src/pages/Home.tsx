@@ -44,33 +44,39 @@ const Home: React.FC = () => {
           // Don't return here, let it fall through to use fallback testimonials
         }
 
-        if (data && data.length > 0) {
-          // Get user names for each feedback
-          const feedbackWithNames = await Promise.all(
-            data.map(async (feedback) => {
-              try {
-                const { data: profile } = await supabase
-                  .from('profiles')
-                  .select('name')
-                  .eq('id', feedback.user_id)
-                  .maybeSingle();
+        if (data && data.length > 0 && !error) {
+          try {
+            // Get user names for each feedback
+            const feedbackWithNames = await Promise.all(
+              data.map(async (feedback) => {
+                try {
+                  const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('name')
+                    .eq('id', feedback.user_id)
+                    .maybeSingle();
 
-                return {
-                  ...feedback,
-                  profiles: { name: profile?.name || 'Anonymous User' }
-                };
-              } catch (error) {
-                return {
-                  ...feedback,
-                  profiles: { name: 'Anonymous User' }
-                };
-              }
-            })
-          );
+                  return {
+                    ...feedback,
+                    profiles: { name: profile?.name || 'Anonymous User' }
+                  };
+                } catch (profileError) {
+                  console.log('Error fetching profile for feedback:', profileError);
+                  return {
+                    ...feedback,
+                    profiles: { name: 'Anonymous User' }
+                  };
+                }
+              })
+            );
 
-          // Randomly select 3 feedback items
-          const shuffled = feedbackWithNames.sort(() => 0.5 - Math.random());
-          setUserFeedback(shuffled.slice(0, 3));
+            // Randomly select 3 feedback items
+            const shuffled = feedbackWithNames.sort(() => 0.5 - Math.random());
+            setUserFeedback(shuffled.slice(0, 3));
+          } catch (processingError) {
+            console.error('Error processing feedback:', processingError);
+            // Fall through to use fallback testimonials
+          }
         }
       } catch (error) {
         console.error('Error fetching feedback:', error);
