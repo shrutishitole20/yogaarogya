@@ -43,8 +43,31 @@ const Home: React.FC = () => {
         }
 
         if (data && data.length > 0) {
+          // Get user names for each feedback
+          const feedbackWithNames = await Promise.all(
+            data.map(async (feedback) => {
+              try {
+                const { data: profile } = await supabase
+                  .from('profiles')
+                  .select('name')
+                  .eq('id', feedback.user_id)
+                  .maybeSingle();
+
+                return {
+                  ...feedback,
+                  profiles: { name: profile?.name || 'Anonymous User' }
+                };
+              } catch (error) {
+                return {
+                  ...feedback,
+                  profiles: { name: 'Anonymous User' }
+                };
+              }
+            })
+          );
+
           // Randomly select 3 feedback items
-          const shuffled = data.sort(() => 0.5 - Math.random());
+          const shuffled = feedbackWithNames.sort(() => 0.5 - Math.random());
           setUserFeedback(shuffled.slice(0, 3));
         }
       } catch (error) {
