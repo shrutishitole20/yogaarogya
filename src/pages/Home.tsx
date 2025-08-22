@@ -4,7 +4,80 @@ import { ArrowRight, CheckCircle, BarChart, Heart, Shield } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import Layout from '../components/Layout';
 
+interface UserFeedback {
+  id: string;
+  rating: number;
+  suggestions: string;
+  created_at: string;
+  profiles?: {
+    name: string;
+  };
+}
+
 const Home: React.FC = () => {
+  const [userFeedback, setUserFeedback] = useState<UserFeedback[]>([]);
+  const [feedbackLoading, setFeedbackLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserFeedback = async () => {
+      try {
+        setFeedbackLoading(true);
+        // Fetch feedback with user profile information, only show positive feedback (4-5 stars)
+        const { data, error } = await supabase
+          .from('feedback')
+          .select(`
+            id,
+            rating,
+            suggestions,
+            created_at,
+            profiles!inner(name)
+          `)
+          .gte('rating', 4) // Only show 4-5 star ratings
+          .not('suggestions', 'is', null) // Only show feedback with comments
+          .order('created_at', { ascending: false })
+          .limit(6); // Get 6 feedback items to show 3 random ones
+
+        if (error) {
+          console.error('Error fetching feedback:', error);
+          return;
+        }
+
+        if (data && data.length > 0) {
+          // Randomly select 3 feedback items
+          const shuffled = data.sort(() => 0.5 - Math.random());
+          setUserFeedback(shuffled.slice(0, 3));
+        }
+      } catch (error) {
+        console.error('Error fetching feedback:', error);
+      } finally {
+        setFeedbackLoading(false);
+      }
+    };
+
+    fetchUserFeedback();
+  }, []);
+
+  // Fallback testimonials if no real feedback is available
+  const fallbackTestimonials = [
+    {
+      rating: 5,
+      suggestions: "The personalized yoga recommendations helped me manage my back pain effectively. I feel relieved after just 3 days!",
+      profiles: { name: "Lahari" }
+    },
+    {
+      rating: 5,
+      suggestions: "As someone with high blood pressure, finding the right exercise was challenging. YOGAAROGYA's recommendations were perfect for my condition.",
+      profiles: { name: "Phani Kumar" }
+    },
+    {
+      rating: 5,
+      suggestions: "I've struggled with Migraine for months. The aasanas recommended by YOGAAROGYA have become an essential part of my daily routine.",
+      profiles: { name: "Siri" }
+    }
+  ];
+
+  const displayedFeedback = userFeedback.length > 0 ? userFeedback : fallbackTestimonials;
+
   return (
     <Layout>
       {/* Hero Section */}
